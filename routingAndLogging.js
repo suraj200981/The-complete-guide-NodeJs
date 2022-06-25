@@ -28,6 +28,28 @@ const server = http.createServer(function (req, res) {
 
    /*This will be used for every other url */
     if(url === '/newPage' && req.method === 'POST'){
+        const requestBody = [];
+
+        req.on('data', function (chunk) {
+            console.log(chunk);
+            requestBody.push(chunk);
+        } );//this will listen for the data to be sent req.on()
+
+        //now that we have all the chunks of the data, we can convert it to a string
+        req.on('end', function (){
+            const parsedBody = Buffer.concat(requestBody).toString(); // this will concatenate the chunks of the data and convert it to a string
+            console.log(parsedBody);// it console logs as key value pairs
+            const finalMessage = parsedBody.split('=')[1]// this will split the key value pairs and return the value of the key. [1] is the value of the key right of the equal sign
+           // finalMessage.replaceAll('+', ' ');// this will replace all the + with a space
+            console.log(finalMessage.replaceAll('+', ' '));// it console logs as key value pairs
+            fs.writeFileSync('userMsg.txt', finalMessage.replaceAll('+', ' '));//this will write the data to the file but with dummy data for now
+
+
+        });//this will listen for the end of the data to be sent req.on()
+
+
+
+
 
         fs.writeFileSync('userMsg.txt', 'Dummy data');//this will write the data to the file but with dummy data for now
         res.statusCode = 302;//this will redirect the user to the new page. 302 is a status code for a redirect
