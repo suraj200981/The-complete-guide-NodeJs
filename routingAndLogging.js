@@ -2,6 +2,9 @@ const  http = require('http'); //importing http module
 //const http = require('./http'); //would find http locally in the same folder
 
 
+const fs = require('fs'); //importing fs module (file system) 
+
+
 //creating a server
 const server = http.createServer(function (req, res) {
 
@@ -24,12 +27,23 @@ const server = http.createServer(function (req, res) {
 
 
    /*This will be used for every other url */
+    if(url === '/newPage' && req.method === 'POST'){
+
+        fs.writeFileSync('userMsg.txt', 'Dummy data');//this will write the data to the file but with dummy data for now
+        res.statusCode = 302;//this will redirect the user to the new page. 302 is a status code for a redirect
+        res.setHeader('Location', '/');//this will set the header to the new page
+
+        return res.end();// this will not continue to the next lines of code. After res.end() the server will stop
+
+
+    }
     res.setHeader('Content-Type', 'text/html');//setting the header to text/html so that it can be read by the browser
    //the response is the html code when you go to the url
     res.write('<html>');
     res.write('<head><title>My First Page</title></head>');
     res.write('<body><h1>Hello from my Node.js Server!</h1></body>');
     res.write('</html>');
+    
 }); 
 
 
