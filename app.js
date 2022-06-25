@@ -8,6 +8,7 @@ const server = http.createServer(function (req, res) {
    //process.exit();// hard exits after one request
 
    res.setHeader('Content-Type', 'text/html');//setting the header
+   //the response is the html code when you go to the url
    res.write('<html>');
     res.write('<head><title>My First Page</title></head>');
     res.write('<body><h1>Hello from my Node.js Server!</h1></body>');
