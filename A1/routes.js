@@ -4,29 +4,31 @@ function requestHandler(req, res) {
   if (req.url === "/") {
     res.write("<h1>Welcome to assignment 1!</h1>");
     res.write(`
-    <a href="/users">see users...</a>
         <form action="/create-user" method="POST">
             <input type="text" name="username" placeholder="username">
             <button type="submit">Submit</button>
         </form>
     `);
+
+    res.write('<a href="/users">see users...</a>');
+
     return res.end();
   }
 
   if (req.url === "/users") {
-    res.write("<h1>Users</h1>");
-    res.write("<ul>");
-    // loop through the usersListArr for each
     // user and write a list item for each
     //dummy user
     usersListArr.push("Bob");
     usersListArr.push("Alice");
     usersListArr.push("Charlie");
+    res.write("<h1>Users</h1>");
+    res.write("<ul>");
     //loop thorugh the usersListArr
     for (let i = 0; i < usersListArr.length; i++) {
       res.write(`<li>${usersListArr[i]}</li>`);
     }
     res.write("</ul>");
+    res.write("<a href='/'>back to home</a>");
     return res.end();
   }
 
