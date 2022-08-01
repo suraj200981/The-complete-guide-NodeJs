@@ -1,6 +1,12 @@
-function requestHandler(req, res) {
-  const usersListArr = [];
+let usersListArr = [];
 
+// user and write a list item for each
+//dummy user
+usersListArr.push("Bob");
+usersListArr.push("Alice");
+usersListArr.push("Charlie");
+
+function requestHandler(req, res) {
   if (req.url === "/") {
     res.write("<h1>Welcome to assignment 1!</h1>");
     res.write(`
@@ -16,11 +22,6 @@ function requestHandler(req, res) {
   }
 
   if (req.url === "/users") {
-    // user and write a list item for each
-    //dummy user
-    usersListArr.push("Bob");
-    usersListArr.push("Alice");
-    usersListArr.push("Charlie");
     res.write("<h1>Users</h1>");
     res.write("<ul>");
     //loop thorugh the usersListArr
@@ -43,6 +44,11 @@ function requestHandler(req, res) {
         const parsedBody = Buffer.concat(usersList).toString();
         const username = parsedBody.split("=")[1];
         console.log(`User ${username} is logged`);
+        usersListArr.push(username);
+        //loop thorugh the usersListArr
+        for (let i = 0; i < usersListArr.length; i++) {
+          console.log(usersListArr[i]);
+        }
       });
     res.statusCode = 302;
     res.setHeader("Location", "/");
