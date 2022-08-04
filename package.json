@@ -1,0 +1,20 @@
+{
+  "name": "the-complete-guide-nodejs",
+  "version": "1.0.0",
+  "description": "Complete Node.js Guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suraj200981/The-complete-guide-NodeJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suraj200981/The-complete-guide-NodeJs/issues"
+  },
+  "homepage": "https://github.com/suraj200981/The-complete-guide-NodeJs#readme"
+}
