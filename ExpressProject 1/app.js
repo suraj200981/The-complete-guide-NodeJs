@@ -13,6 +13,8 @@ const shopRoutes = require("./routes/shop.js"); //importing the shop routes from
 
 app.use(bodyParser.urlencoded()); //using body-parser to parse the body of the request
 
+app.use(express.static(path.join(__dirname, "public"))); //using express to serve static files from the public folder
+
 /***********routes************/
 app.use("/admin", adminRoutes); //using the admin filtered routes
 app.use(shopRoutes); //using the shop routes
