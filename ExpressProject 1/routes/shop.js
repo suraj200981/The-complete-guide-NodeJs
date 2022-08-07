@@ -1,21 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
+const path = require("path");
+
 //express will always end up at the "/" route
 router.get("/", (req, res, next) => {
-  res.send(`
-  <html>
-  <head>
-  <title>Add Product</title>
-  </head>
-  <body>
-  <h1>Home</h1>
-  <a href='/admin/add-product'>Add Product</a>
-  <br>
-  <br>
-  <a href='/products'>Products</a>
-  </body>
-  </html>`);
+  res.sendFile(path.join(__dirname, "../", "views", "shop.html"));
 }); //home middleware
 
 module.exports = router;
