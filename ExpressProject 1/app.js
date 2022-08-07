@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded()); //using body-parser to parse the body of the r
 
 /*route for specific requests*/
 
-app.use("/add-product", (req, res, next) => {
+app.get("/add-product", (req, res, next) => {
   console.log("Products page");
   res.send(`
   <html>
@@ -26,7 +26,8 @@ app.use("/add-product", (req, res, next) => {
   </html>`);
 }); //add product middleware
 
-app.use("/product", (req, res, next) => {
+//changed to get request, 'use' is for all requests
+app.post("/product", (req, res, next) => {
   console.log(req.body.product.toString());
   res.redirect("/"); //redirect to home page
 }); //product middleware
@@ -41,6 +42,9 @@ app.use("/", (req, res, next) => {
   <body>
   <h1>Home</h1>
   <a href='/add-product'>Add Product</a>
+  <br>
+  <br>
+  <a href='/products'>Product</a>
   </body>
   </html>`);
 }); //home middleware
