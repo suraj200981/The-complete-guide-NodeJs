@@ -1,3 +1,5 @@
+/**************Imports*************/
+
 const express = require("express");
 
 const bodyParser = require("body-parser");
@@ -13,5 +15,10 @@ app.use(bodyParser.urlencoded()); //using body-parser to parse the body of the r
 /***********routes************/
 app.use(adminRoutes); //using the admin routes
 app.use(shopRoutes); //using the shop routes
+
+//404 middleware
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Page not found</h1>");
+});
 
 app.listen(3000);
