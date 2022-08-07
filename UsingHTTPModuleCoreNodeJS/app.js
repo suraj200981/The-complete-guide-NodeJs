@@ -14,7 +14,7 @@ const server = http.createServer(function (req, res) {
   <h1>Hello from my Node.js Server!</h1>
   <p>The date and time is ${new Date()}</p>
   </body>`);
-  
+
   res.write("</html>");
 });
 
