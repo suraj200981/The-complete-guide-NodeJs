@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
   </head>
   <body>
   <h1>Home</h1>
-  <a href='/add-product'>Add Product</a>
+  <a href='/admin/add-product'>Add Product</a>
   <br>
   <br>
   <a href='/products'>Products</a>
