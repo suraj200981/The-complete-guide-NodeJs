@@ -2,11 +2,13 @@ const express = require("express");
 
 const app = express(); //creating an express app
 
-//route for all requests
+/*route for all requests*/
 app.use("/", (req, res, next) => {
   console.log("Always runs...");
   next();
 });
+
+/*route for specific requests*/
 
 app.use("/add-product", (req, res, next) => {
   console.log("Products page");
