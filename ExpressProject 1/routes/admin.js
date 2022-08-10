@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const path = require("path");
-
 const products = [];
 
 //all admin routes will be prefixed with /admin
@@ -10,7 +8,9 @@ const products = [];
 //admin/add-product GET
 router.get("/add-product", (req, res, next) => {
   console.log("Products page");
-  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
+  res.render("add-product", {
+    pageTitle: "Admin area",
+  });
 }); //add product middleware
 
 //admin/add-product POST

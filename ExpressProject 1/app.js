@@ -4,9 +4,16 @@ const path = require("path");
 const express = require("express");
 
 const bodyParser = require("body-parser");
+const { engine } = require("express-handlebars"); //handlebars
 
 const app = express(); //creating an express app
+///////////////////////////////////////////////////////////////////
+//templating engine
+app.engine(".hbs", engine({ extname: ".hbs", defaultLayout: false }));
+app.set("view engine", ".hbs");
+app.set("views", "./views");
 
+//////////////////////////////////////////////////////////////////////////////////////
 const adminRoutes = require("./routes/admin.js"); //importing the admin routes from admin.js
 
 const shopRoutes = require("./routes/shop.js"); //importing the shop routes from shop.js
@@ -21,7 +28,7 @@ app.use(shopRoutes); //using the shop routes
 
 //404 middleware
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  res.status(404).render("404", { pageTitle: "Page Not Found - 404" });
 });
 
 app.listen(3000);
