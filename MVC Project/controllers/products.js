@@ -21,5 +21,13 @@ exports.postNewProductName = (req, res, next) => {
   res.redirect("/"); //redirect to home page
 };
 
-//export
-exports.products = products;
+//get products
+exports.getProductsHomepage = (req, res, next) => {
+  res.render("shop", {
+    pageTitle: "Products we sell",
+    products: products,
+    hasProducts: products.length > 0,
+    activeShop: true,
+    productCSS: true,
+  });
+};
