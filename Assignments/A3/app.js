@@ -9,7 +9,7 @@ const homeRoutes = require("./routes/home");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(usersRoutes);
+app.use(usersRoutes); // users routes
 app.use(homeRoutes);
 
 app.listen(3000);
