@@ -1,0 +1,15 @@
+ <main>
+    {{#if hasUsers }}
+    <div class="grid">
+        {{#each users}}
+            <header class="card__header">
+                <h1 class="product__title">{{ user }}</h1>
+            </header>
+            
+        </article>
+        {{/each}}
+    </div>
+    {{ else }}
+    <h1>No Users Found!</h1>
+    {{/if}}
+</main>
