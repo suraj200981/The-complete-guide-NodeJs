@@ -10,6 +10,9 @@ router.get("/add-product", (req, res, next) => {
   console.log("Products page");
   res.render("add-product", {
     pageTitle: "Admin area",
+    activeAddProduct: true,
+    formsCSS: true,
+    productCSS: true,
   });
 }); //add product middleware
 

@@ -9,7 +9,14 @@ const { engine } = require("express-handlebars"); //handlebars
 const app = express(); //creating an express app
 ///////////////////////////////////////////////////////////////////
 //templating engine
-app.engine(".hbs", engine({ extname: ".hbs", defaultLayout: false }));
+app.engine(
+  ".hbs",
+  engine({
+    extname: ".hbs",
+    defaultLayout: "main-layout",
+    layoutsDir: path.join(__dirname, "views/layouts"),
+  })
+);
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
