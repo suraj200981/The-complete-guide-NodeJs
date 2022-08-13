@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const path = require("path");
-
 const adminData = require("./admin.js");
 
 ////when we are at this url we will render the shop page and pass the data to the shop page
